@@ -1,0 +1,74 @@
+https://www.youtube.com/watch?v=McEc5yX6kf4&ab_channel=AlexEagleson
+
+using lerna for dependency
+using yarn because yarn has yarn workspaces
+go to simple-node-server and do yarn init
+with default values
+
+
+yarn add -D typescript @types/express express
+npx tsc --init   (intialize typescript and creates tsconfig.json)
+
+since using typescript
+import express from "express";
+
+go to paxckage and create a simple-react-app folder
+yarn create react-app ./ --template typescript
+
+
+what we could do not have two different versions of typescript in express and in react?
+[yarn remove typescript] from react app
+ [yarn add -D typescript] seperately
+now both have same versions
+
+go to monorepo root direc
+yarn init with default values
+lerna manages monorepo for multiple projects in single repo
+ yarn add -D lerna
+ npx lerna init
+
+
+ in lerna.json 
+ add "npmClient":"yarn" 
+ older version 
+
+"private":true in package .json of monorepo
+  yarn install
+
+
+moves nodemodules of both directory to root directory nodemodules
+
+
+Go to react app - yarn start
+
+
+go to node app change the ts config to run the node
+    uncomment "outFile": "./dist",    
+     change pkg.json   
+
+ "scripts":{
+    "start":"tsc && node dist/server.js "},and run yarn start
+
+
+    for cors error in server in req code
+   res.header("Access-Control-Allow-Headers", "*");
+
+The solution was to go into tsconfig.json and add:
+"declaration": true,
+"declarationMap": true,
+
+ "compilerOptions": {
+    "baseUrl": "./packages",
+
+to add packages to both server and express like yarn do 
+
+    npx lerna add lodash    
+
+
+    create a .gitignore in root and add nodemodules
+    git init
+
+     D:\React\Monorepo\packages\simple-react-app\src
+
+
+     git submodule add https://github.com/alexeagleson/react-dark-mode.git
